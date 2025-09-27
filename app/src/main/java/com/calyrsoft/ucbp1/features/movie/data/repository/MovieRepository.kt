@@ -4,10 +4,7 @@ import com.calyrsoft.ucbp1.features.movie.data.datasource.MovieRemoteDataSource
 import com.calyrsoft.ucbp1.features.movie.domain.model.MovieModel
 import com.calyrsoft.ucbp1.features.movie.domain.repository.IMoviesRepository
 
-class MovieRepository(
-    private val movieRemoteDataSource: MovieRemoteDataSource
-): IMoviesRepository {
-    override suspend fun fetchPopularMovies(): Result<List<MovieModel>>
-    = movieRemoteDataSource.fetchPopularMovies()
-
+interface IMoviesRepository {
+    suspend fun getMovies(): List<MovieModel>
+    suspend fun toggleLike(movie: MovieModel)
 }
